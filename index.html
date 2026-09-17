@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Duebrief — tonight's work, ranked</title>
+    <title>Duebrief — Schoology is a list. This is the order.</title>
     <meta
       name="description"
-      content="A $14 one-file planner for students. It ranks tonight's work by urgency, points, type, and difficulty. Offline. No account. No subscription."
+      content="The $14 exam-week ranker for Schoology high-schoolers. Paste tonight's Upcoming dump. Start the unit test, not the 10-point workbook. Offline. One file."
     />
-    <meta property="og:title" content="Duebrief — tonight's work, ranked" />
+    <meta property="og:title" content="Duebrief — Schoology is a list. This is the order." />
     <meta
       property="og:description"
-      content="A $14 one-file planner for students. Offline. No account. No subscription."
+      content="Exam-week ranker for Schoology students. Paste Upcoming. Get the one thing to start. $14 once."
     />
     <meta property="og:type" content="product" />
     <link rel="canonical" href="https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/" />
@@ -35,82 +35,95 @@
           "@type": "Person",
           "name": "Luke Horn"
         },
-        "description": "A one-file planner that ranks school work by urgency, points, type, and difficulty."
+        "description": "Exam-week ranker for high-schoolers on Schoology. Paste Upcoming, get the next assignment."
       }
     </script>
   </head>
   <body>
     <main class="wrap">
-      <div class="mark">Duebrief</div>
-      <h1>Tonight's work, ranked.</h1>
+      <div class="mark">Duebrief · Schoology exam week</div>
+      <h1>Schoology is a list. This is the order.</h1>
       <p class="lede">
-        A one-file planner for students who have a list and no idea what to start.
-        Offline. No account. You buy it once.
+        For the night a unit test, an overdue DBQ, and Spanish homework all land
+        in Upcoming. Paste the dump. Start the test. One HTML file. $14 once.
       </p>
       <div class="cta">
-        <a class="btn" href="try/">Try 5 items</a>
+        <a class="btn" href="try/">Open Tuesday's dump</a>
         <button class="primary" type="button" id="buy">Buy <span id="price">$14</span></button>
       </div>
-      <p class="price">One-time. Personal use. Works by double-clicking a file.</p>
+      <p class="price">Personal use. Offline. Not a Schoology add-on — you paste Upcoming yourself.</p>
       <div class="panel" id="buy-panel" hidden>
         <p>
-          The product is finished. Card checkout is the one seller step that still
+          The file is finished. Card checkout is the one seller step that still
           needs a real identity, so it is not live yet.
         </p>
         <p>
           Email <a id="mail-buy" href="mailto:hornsons21@gmail.com">hornsons21@gmail.com</a>
-          with the subject Duebrief and Luke will send a payment link. Or use the
-          try-out now — it is the real ranking, capped at five items.
+          with the subject Duebrief and Luke will send a payment link. Or open
+          Tuesday's dump now — it is a real five-assignment collision.
         </p>
       </div>
+
+      <hr />
+      <h2>Who this is for</h2>
+      <p>
+        High-schoolers (and the parent staring at the same Upcoming screen)
+        whose school runs on Schoology. Specifically exam week, when the LMS
+        shows five things and will not say which one wastes the night.
+      </p>
+      <p>
+        Not for people who want a calendar, a Notion template, or a generic
+        homework app. Schoology already is the list. This only ranks it.
+      </p>
+
+      <hr />
+      <h2>What $14 buys that the free try-out does not</h2>
+      <ul>
+        <li>Import your own Upcoming dump (CSV or paste) — unlimited assignments</li>
+        <li>A 60-second Schoology → Duebrief card, plus a sample Tuesday CSV</li>
+        <li>Local save, JSON backup, print tonight's brief</li>
+        <li>The same ranking the try-out already uses</li>
+      </ul>
+      <p>Not affiliated with Schoology. No login. No cloud.</p>
+
+      <hr />
+      <h2>The Tuesday it was built for</h2>
+      <p>
+        Physics unit test tomorrow (100 pts). History DBQ already late (50).
+        Spanish workbook due tonight (10). Chem quiz Friday. Omnibus recitation
+        Monday. Schoology lists them as equals. The try-out does not:
+        <a href="try/">the test is next</a>, and the math says why.
+      </p>
 
       <hr />
       <h2>The model</h2>
       <div class="weights">
         <div>
           <strong>40 urgency</strong>
-          Quiet two weeks out. Steep in the last days. Overdue pins above everything still upcoming.
+          Quiet two weeks out. Steep in the last days. Overdue pins urgency — not the whole score.
         </div>
         <div>
           <strong>25 points</strong>
-          A 100-point test outweighs a 10-point worksheet. Blank points count as 20, not zero.
+          The 100-point test outweighs the 10-point workbook. Blank points count as 20.
         </div>
         <div>
           <strong>20 type</strong>
-          Test &gt; project &gt; quiz &gt; homework &gt; other.
+          Test &gt; project / DBQ &gt; quiz &gt; homework &gt; recitation.
         </div>
         <div>
           <strong>15 difficulty</strong>
-          What you said, 1–5. If you lie, the list will lie back.
+          What you said, 1–5. If you lie, you start the wrong thing.
         </div>
       </div>
       <p>
-        Submitted work scores zero and leaves the brief. The math is public in
+        Math is public in
         <a href="https://github.com/nyfeblade/duebrief/blob/cursor/duebrief-storefront-7e8b/src/score.js">score.js</a>.
-      </p>
-
-      <hr />
-      <h2>What you get</h2>
-      <ul>
-        <li><code>duebrief.html</code> — unlimited items, local save, why-this-rank breakdown</li>
-        <li>Export / import JSON (your backup; nothing is uploaded)</li>
-        <li>Print today and print week (browser → PDF)</li>
-        <li>How-it-scores card and a personal-use license</li>
-      </ul>
-      <p>Not a calendar. Not Notion. Not a subscription. Not a cloud.</p>
-
-      <hr />
-      <h2>What is free</h2>
-      <p>
-        The <a href="try/">5-item try-out</a> is the same ranking. It does not save,
-        print, or export. That is the trial — not a crippled fake.
       </p>
 
       <hr />
       <h2>Refunds</h2>
       <p>
-        14 days, no argument. Email and say so. The file is a tool; if the ranking
-        feels wrong after you use it, keep your money.
+        14 days, no argument. If it does not change what you start tonight, keep the $14.
       </p>
 
       <footer>
