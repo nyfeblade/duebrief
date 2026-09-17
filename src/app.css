@@ -221,10 +221,16 @@ form.add label {
 }
 
 form.add input,
-form.add select {
+form.add select,
+form.add textarea {
   background: var(--void);
   border: 1px solid var(--hairline);
   padding: 8px;
+}
+
+form.add textarea {
+  resize: vertical;
+  min-height: 8rem;
 }
 
 form.add .row {
