@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Duebrief — try-out</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../src/app.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div class="brand">Duebrief</div>
+        <div>
+          <time id="clock"></time>
+          <span class="mode" id="mode-label"></span>
+          <span class="mode" id="count"></span>
+        </div>
+      </header>
+
+      <p class="banner">5-item try-out. Nothing is saved. <a href="../index.html">Buy the $14 file</a> for unlimited items, local save, export, and print.</p>
+
+      <section class="next">
+        <div class="label">Next</div>
+        <h1 id="next-title">Loading</h1>
+        <p class="why" id="next-why"></p>
+      </section>
+
+      <div class="toolbar">
+        <button type="button" id="print-today">Print today</button>
+        <button type="button" id="print-week">Print week</button>
+        <button type="button" id="export">Export JSON</button>
+        <label id="import-label" class="demo-lock">
+          Import
+          <input id="import" type="file" accept="application/json" hidden />
+        </label>
+      </div>
+      <p id="demo-lock" class="demo-lock" hidden>
+        Try-out cap reached (5 open items). Delete one, or buy the file for unlimited + save + print.
+      </p>
+
+      <div class="grid" id="lists">
+        <div>
+          <h2>Overdue</h2>
+          <div id="overdue-list"></div>
+          <h2 style="margin-top: 28px">Due in 48 hours</h2>
+          <div id="soon-list"></div>
+          <h2 style="margin-top: 28px">All work</h2>
+          <div id="all-list"></div>
+        </div>
+        <div>
+          <h2>Add work</h2>
+          <form class="add" id="add-form">
+            <label>
+              Title
+              <input name="title" required maxlength="160" placeholder="Physics unit test" />
+            </label>
+            <label>
+              Due
+              <input name="due" type="datetime-local" required />
+            </label>
+            <div class="row">
+              <label>
+                Points
+                <input name="points" type="number" min="0" max="1000" step="1" placeholder="20" />
+              </label>
+              <label>
+                Type
+                <select name="type">
+                  <option value="homework">Homework</option>
+                  <option value="quiz">Quiz</option>
+                  <option value="project">Project</option>
+                  <option value="test">Test</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Difficulty (1 easy – 5 brutal)
+              <select name="difficulty">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
+            <button class="primary" type="submit">Add to the list</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>window.DUEBRIEF_MODE = "demo";</script>
+    <script src="../src/score.js"></script>
+    <script src="../src/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Duebrief — tonight's work, ranked</title>
+    <meta
+      name="description"
+      content="A $14 one-file planner for students. It ranks tonight's work by urgency, points, type, and difficulty. Offline. No account. No subscription."
+    />
+    <meta property="og:title" content="Duebrief — tonight's work, ranked" />
+    <meta
+      property="og:description"
+      content="A $14 one-file planner for students. Offline. No account. No subscription."
+    />
+    <meta property="og:type" content="product" />
+    <link rel="canonical" href="https://nyfeblade.github.io/duebrief/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/store.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Duebrief",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "14",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Luke Horn"
+        },
+        "description": "A one-file planner that ranks school work by urgency, points, type, and difficulty."
+      }
+    </script>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="mark">Duebrief</div>
+      <h1>Tonight's work, ranked.</h1>
+      <p class="lede">
+        A one-file planner for students who have a list and no idea what to start.
+        Offline. No account. You buy it once.
+      </p>
+      <div class="cta">
+        <a class="btn" href="try/">Try 5 items</a>
+        <button class="primary" type="button" id="buy">Buy <span id="price">$14</span></button>
+      </div>
+      <p class="price">One-time. Personal use. Works by double-clicking a file.</p>
+      <div class="panel" id="buy-panel" hidden>
+        <p>
+          The product is finished. Card checkout is the one seller step that still
+          needs a real identity, so it is not live yet.
+        </p>
+        <p>
+          Email <a id="mail-buy" href="mailto:hornsons21@gmail.com">hornsons21@gmail.com</a>
+          with the subject Duebrief and Luke will send a payment link. Or use the
+          try-out now — it is the real ranking, capped at five items.
+        </p>
+      </div>
+
+      <hr />
+      <h2>The model</h2>
+      <div class="weights">
+        <div>
+          <strong>40 urgency</strong>
+          Quiet two weeks out. Steep in the last days. Overdue pins above everything still upcoming.
+        </div>
+        <div>
+          <strong>25 points</strong>
+          A 100-point test outweighs a 10-point worksheet. Blank points count as 20, not zero.
+        </div>
+        <div>
+          <strong>20 type</strong>
+          Test &gt; project &gt; quiz &gt; homework &gt; other.
+        </div>
+        <div>
+          <strong>15 difficulty</strong>
+          What you said, 1–5. If you lie, the list will lie back.
+        </div>
+      </div>
+      <p>
+        Submitted work scores zero and leaves the brief. The math is public in
+        <a href="https://github.com/nyfeblade/duebrief/blob/main/src/score.js">score.js</a>.
+      </p>
+
+      <hr />
+      <h2>What you get</h2>
+      <ul>
+        <li><code>duebrief.html</code> — unlimited items, local save, why-this-rank breakdown</li>
+        <li>Export / import JSON (your backup; nothing is uploaded)</li>
+        <li>Print today and print week (browser → PDF)</li>
+        <li>How-it-scores card and a personal-use license</li>
+      </ul>
+      <p>Not a calendar. Not Notion. Not a subscription. Not a cloud.</p>
+
+      <hr />
+      <h2>What is free</h2>
+      <p>
+        The <a href="try/">5-item try-out</a> is the same ranking. It does not save,
+        print, or export. That is the trial — not a crippled fake.
+      </p>
+
+      <hr />
+      <h2>Refunds</h2>
+      <p>
+        14 days, no argument. Email and say so. The file is a tool; if the ranking
+        feels wrong after you use it, keep your money.
+      </p>
+
+      <footer>
+        Made by Luke Horn ·
+        <a href="legal/terms.html">Terms</a> ·
+        <a href="legal/refunds.html">Refunds</a> ·
+        <a href="https://github.com/nyfeblade/duebrief">Source</a>
+      </footer>
+    </main>
+    <script src="config.js"></script>
+    <script src="assets/store.js"></script>
+  </body>
+</html>
