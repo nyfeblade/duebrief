@@ -4,7 +4,7 @@ Nothing here costs money. Nothing here needs a weekly ritual.
 
 ## How a sale happens
 
-1. Someone hits the [storefront](https://nyfeblade.github.io/duebrief/) or a Gumroad link.
+1. Someone hits the [storefront](https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/) or a Gumroad link.
 2. They pay $14.
 3. Gumroad emails them `duebrief-v1.zip`.
 4. They open `duebrief.html`. Luke does nothing.

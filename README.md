@@ -2,7 +2,8 @@
 
 Tonight's work, ranked. A $14 one-file planner for students.
 
-Storefront: this repo, meant for [GitHub Pages](https://nyfeblade.github.io/duebrief/).
+Live storefront (GitHub Pages is 404; this is the $0 public host):
+https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/
 
 ```
 npm test          # scoring fixtures vs the schedule-mcp model

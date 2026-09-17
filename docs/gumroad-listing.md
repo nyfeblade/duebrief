@@ -27,7 +27,7 @@ You also get export/import JSON, print-today and print-week (save as PDF from th
 
 Not a calendar. Not Notion. Not a subscription.
 
-Try five items free on the site before you buy: https://nyfeblade.github.io/duebrief/try/
+Try five items free on the site before you buy: https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/try/
 
 ## What buyers receive
 
