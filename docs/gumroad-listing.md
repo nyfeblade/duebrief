@@ -25,14 +25,14 @@ You get:
 
 Not a calendar. Not Notion. Not a Schoology add-on (no login, no API). Not a subscription.
 
-Try Tuesday's dump free before you buy: https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/try/
+Try Tuesday's dump free before you buy: https://raw.githack.com/nyfeblade/duebrief/baaff3b6a324fc19a6ef2e0c63cce99500f8a7f7/try/
 
 ## What buyers receive
 
 Upload `duebrief-v1.zip`:
 
 - `duebrief.html`
-- `SCHOOLOGY.txt`
+- `SCHOLOGY.txt`
 - `schoology-tuesday.csv`
 - `README.txt`
 - `HOW-IT-SCORES.txt`

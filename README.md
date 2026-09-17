@@ -2,7 +2,7 @@
 
 Schoology is a list. This is the order. A $14 exam-week ranker for high-schoolers.
 
-**Live:** https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/
+**Live:** https://raw.githack.com/nyfeblade/duebrief/baaff3b6a324fc19a6ef2e0c63cce99500f8a7f7/
 
 ```
 npm test
