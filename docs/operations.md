@@ -17,6 +17,8 @@ If they want a refund inside 14 days, refund in Gumroad. Do not argue.
 
 If the file will not open: they should use any current browser and double-click `duebrief.html`. Chrome, Firefox, Safari, Edge are fine.
 
+If they ask for a Schoology API sync: no. The product is a paste/CSV file on purpose — $0, no server.
+
 If they ask for a feature: ignore or say no. The product is finished.
 
 ## Updates

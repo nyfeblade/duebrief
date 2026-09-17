@@ -1,15 +1,14 @@
 # Duebrief
 
-Tonight's work, ranked. A $14 one-file planner for students.
+Schoology is a list. This is the order. A $14 exam-week ranker for high-schoolers.
 
-Live storefront (GitHub Pages is 404; this is the $0 public host):
-https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/
+**Live:** https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/
 
 ```
-npm test          # scoring fixtures vs the schedule-mcp model
+npm test
 node tools/build-product.mjs
 ```
 
-`dist/duebrief-v1.zip` is the file that goes on Gumroad. It is not committed — a public zip would make the store a donation jar.
+`dist/duebrief-v1.zip` goes on Gumroad. Not committed.
 
-Demo lives at `/try/`. Checkout URL, when Luke has one, goes in `config.js`.
+Checkout URL, when Luke has one, goes in `config.js`.

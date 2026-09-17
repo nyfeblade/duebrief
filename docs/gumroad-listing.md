@@ -1,6 +1,6 @@
 # Gumroad listing (paste as-is)
 
-**Name:** Duebrief — tonight's work, ranked
+**Name:** Duebrief — Schoology is a list. This is the order.
 
 **Price:** $14 USD  
 **Type:** Digital product  
@@ -8,32 +8,32 @@
 
 ## Summary
 
-A one-file planner for students. It ranks tonight's work by urgency, points, type, and difficulty. Offline. No account. You buy it once.
+The exam-week ranker for high-schoolers on Schoology. Paste tonight's Upcoming dump. Start the unit test, not the 10-point workbook. One file. Offline. You buy it once.
 
 ## Description
 
-Duebrief is a single HTML file you double-click.
+Schoology will show a unit test, an overdue DBQ, and Spanish homework as the same pile. Duebrief is the order.
 
-Add the work you actually have. The big title is the next thing. Overdue floats to the top. A test outranks homework of the same points. Submitted work disappears.
+Paste Upcoming as CSV (title, course, due, points, type, difficulty) or import the sample Tuesday. The big title is what to start. A 100-point test tomorrow still beats a 50-point paper that is already late — overdue only pins urgency.
 
-The ranking is four numbers that sum to 100:
+You get:
 
-- 40 urgency (quiet two weeks out, steep at the end; late work is pinned high)
-- 25 points (blank counts as 20, not zero)
-- 20 type (test > project > quiz > homework > other)
-- 15 difficulty (what you said, 1–5)
+- `duebrief.html` — unlimited assignments, local save, print tonight
+- `SCHOOLOGY.txt` — 60 seconds from Upcoming into the file
+- `schoology-tuesday.csv` — the collision this was built for
+- How the score works, and a personal-use license
 
-You also get export/import JSON, print-today and print-week (save as PDF from the browser), and a one-page explanation of the math.
+Not a calendar. Not Notion. Not a Schoology add-on (no login, no API). Not a subscription.
 
-Not a calendar. Not Notion. Not a subscription.
-
-Try five items free on the site before you buy: https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/try/
+Try Tuesday's dump free before you buy: https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/try/
 
 ## What buyers receive
 
-Upload `duebrief-v1.zip`. It contains:
+Upload `duebrief-v1.zip`:
 
 - `duebrief.html`
+- `SCHOOLOGY.txt`
+- `schoology-tuesday.csv`
 - `README.txt`
 - `HOW-IT-SCORES.txt`
 - `LICENSE.txt`
@@ -48,4 +48,4 @@ hornsons21@gmail.com
 
 ## Tags
 
-student, planner, homework, study, offline, school
+schoology, exam week, high school, homework, test, upcoming, student, offline

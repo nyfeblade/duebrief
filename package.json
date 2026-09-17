@@ -1,9 +1,9 @@
 {
   "name": "duebrief",
   "private": true,
-  "description": "Tonight's work, ranked.",
+  "description": "Schoology is a list. This is the order.",
   "scripts": {
-    "test": "node tests/score.test.mjs",
+    "test": "node tests/score.test.mjs && node tests/upcoming.test.mjs",
     "build": "node tools/build-product.mjs"
   }
 }
