@@ -4,7 +4,7 @@ Nothing here costs money. Nothing here needs a weekly ritual. There is no checko
 
 ## How someone uses it
 
-1. They open the [board](https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/app/).
+1. They open the [board](https://raw.githack.com/nyfeblade/duebrief/d26edd506fed3e5d9f7f8741117e9b090cb76fc5/app/).
 2. They paste Upcoming (or keep the Tuesday example).
 3. They start the thing it names. Luke does nothing.
 
@@ -18,7 +18,7 @@ If they ask for a feature: ignore or say no unless you actually want to change t
 
 ## Updates
 
-Change the HTML, run `node tools/build-product.mjs`. The public board is the GitHub branch on githack. Prefer commit-pinned URLs when the branch directory cache is stale.
+Change the HTML, run `node tools/build-product.mjs`. Prefer commit-pinned githack URLs; the branch `/src/app.js` cache is stale.
 
 ## What Luke does not do
 
