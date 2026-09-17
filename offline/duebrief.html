@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Duebrief — exam-week board</title>
+    <style>
+:root {
+  --void: #000;
+  --surface: #111;
+  --elevated: #161616;
+  --hairline: #2a2a2a;
+  --text: #f2f2f2;
+  --secondary: #8a8a8a;
+  --meta: #6b6b6b;
+  --silver: #c8c8c8;
+  --school: #8eb4c9;
+  --danger: #c98989;
+  --ok: #8aa88a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--text);
+  font: 15px/1.45 "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--silver);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: var(--elevated);
+  border: 1px solid var(--hairline);
+  color: var(--text);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus-visible {
+  border-color: var(--silver);
+  outline: none;
+}
+
+button.primary {
+  background: var(--text);
+  color: var(--void);
+  border-color: var(--text);
+}
+
+button.ghost {
+  background: transparent;
+}
+
+button.danger {
+  color: var(--danger);
+  border-color: #3a2222;
+}
+
+.app {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 20px 80px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 16px;
+  margin-bottom: 28px;
+}
+
+.brand {
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+.top time,
+.mode {
+  color: var(--meta);
+  font-size: 13px;
+}
+
+.banner {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 12px 14px;
+  margin-bottom: 24px;
+  color: var(--secondary);
+}
+
+.banner a {
+  color: var(--text);
+}
+
+.next {
+  margin-bottom: 36px;
+}
+
+.next .label {
+  color: var(--meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.next h1 {
+  margin: 8px 0 6px;
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.next .why {
+  color: var(--secondary);
+  max-width: 40rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 800px) {
+  .grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+h2 {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--meta);
+  margin: 0 0 12px;
+}
+
+ul.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+ul.list li {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.score {
+  font-variant-numeric: tabular-nums;
+  color: var(--silver);
+}
+
+.title {
+  font-weight: 500;
+}
+
+.meta {
+  color: var(--meta);
+  font-size: 13px;
+}
+
+.overdue .title,
+.overdue .score {
+  color: var(--danger);
+}
+
+.done .title {
+  color: var(--meta);
+  text-decoration: line-through;
+}
+
+.row-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.row-actions button {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+form.add {
+  display: grid;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 14px;
+}
+
+form.add label {
+  display: grid;
+  gap: 4px;
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+form.add input,
+form.add select,
+form.add textarea {
+  background: var(--void);
+  border: 1px solid var(--hairline);
+  padding: 8px;
+}
+
+form.add textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+form.add .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.breakdown {
+  color: var(--meta);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.empty {
+  color: var(--secondary);
+}
+
+.demo-lock {
+  color: var(--meta);
+  font-size: 13px;
+}
+
+a.brand {
+  text-decoration: none;
+}
+
+.stakes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.stakes div {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 12px;
+}
+
+.stakes strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.stakes span {
+  color: var(--meta);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tonight,
+.week-wrap,
+.courses-wrap {
+  margin-bottom: 32px;
+}
+
+.tonight-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hours {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+.hours input {
+  width: 140px;
+}
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.day {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 10px 8px;
+  min-height: 92px;
+}
+
+.day .when {
+  color: var(--meta);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.day .load {
+  font-size: 18px;
+  margin: 6px 0 4px;
+}
+
+.day.tight {
+  border-color: #5a4a2a;
+}
+
+.day.blown {
+  border-color: #5a2a2a;
+}
+
+.day.blown .load {
+  color: var(--danger);
+}
+
+.course {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+.bar {
+  height: 6px;
+  background: var(--elevated);
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--school);
+}
+
+.leftover {
+  color: var(--danger);
+  font-size: 13px;
+}
+
+.focus-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.focus-clock {
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid var(--hairline);
+  background: var(--elevated);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.weights-edit {
+  margin-top: 28px;
+  color: var(--secondary);
+}
+
+.weights-edit summary {
+  cursor: pointer;
+  color: var(--meta);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.pack-tag {
+  color: var(--school);
+  font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .stakes,
+  .week {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  .top,
+  .banner,
+  form.add,
+  .toolbar,
+  .row-actions,
+  .demo-lock {
+    display: none !important;
+  }
+
+  .app {
+    max-width: none;
+    padding: 0;
+  }
+
+  .next h1 {
+    color: #111;
+  }
+
+  ul.list li {
+    border-color: #ddd;
+  }
+
+  .score,
+  .title,
+  .meta,
+  .why,
+  h2,
+  .brand {
+    color: #111;
+  }
+}
+
+</style>
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div>
+          <a class="brand" href="#">Duebrief</a>
+          <span class="mode">free · Schoology exam week</span>
+        </div>
+        <div>
+          <time id="clock"></time>
+          <span class="mode" id="count"></span>
+        </div>
+      </header>
+
+      
+
+      <section class="next">
+        <div class="label">Start this</div>
+        <h1 id="next-title">Loading</h1>
+        <p class="why" id="next-why"></p>
+        <div class="focus-row">
+          <button type="button" class="primary" id="focus-start">Start focus</button>
+          <button type="button" id="focus-stop" hidden>Stop</button>
+          <span id="focus-clock" class="focus-clock" hidden>0:00</span>
+        </div>
+      </section>
+
+      <div class="stakes" id="stakes"></div>
+
+      <section class="tonight" id="tonight-wrap">
+        <div class="tonight-head">
+          <h2>Tonight’s pack</h2>
+          <label class="hours">
+            Hours I have
+            <input id="hours" type="range" min="1" max="8" step="0.5" value="3" />
+            <strong id="hours-label">3h</strong>
+          </label>
+        </div>
+        <p class="why" id="tonight-why"></p>
+        <div id="tonight-list"></div>
+      </section>
+
+      <section class="week-wrap">
+        <h2>Week collisions</h2>
+        <div class="week" id="week"></div>
+      </section>
+
+      <section class="courses-wrap">
+        <h2>Course load</h2>
+        <div id="courses"></div>
+      </section>
+
+      <div class="toolbar">
+        <button type="button" id="print-today">Print tonight</button>
+        <button type="button" id="print-week">Print week</button>
+        <button type="button" id="export">Export JSON</button>
+        <button type="button" id="export-ics">Add to calendar</button>
+        <button type="button" id="share">Copy share link</button>
+        <button type="button" id="load-tuesday">Load Tuesday example</button>
+        <label id="import-label" class="file-label">
+          Import CSV / JSON
+          <input id="import" type="file" accept=".csv,.json,.ics,text/csv,text/plain,application/json" hidden />
+        </label>
+        <a class="file-label" id="offline-link" href="../offline/duebrief.html" download>Download offline file</a>
+      </div>
+      <p id="share-status" class="demo-lock" hidden></p>
+
+      <div class="grid" id="lists">
+        <div>
+          <h2>Overdue</h2>
+          <div id="overdue-list"></div>
+          <h2 style="margin-top: 28px">Due in 48 hours</h2>
+          <div id="soon-list"></div>
+          <h2 style="margin-top: 28px">Whole dump</h2>
+          <div id="all-list"></div>
+        </div>
+        <div>
+          <h2>Paste Upcoming</h2>
+          <form class="add" id="paste-form">
+            <label>
+              CSV, pipes, tabs, or “Physics: Unit 3 test 100 pts due Sep 18”
+              <textarea
+                name="paste"
+                rows="7"
+                placeholder="Physics: Unit 3 test 100 pts due Sep 18
+History: DBQ Reconstruction 50 pts due Sep 16
+title,course,due,points,type,difficulty"
+              ></textarea>
+            </label>
+            <button class="primary" type="submit">Rank this dump</button>
+          </form>
+          <h2 style="margin-top: 28px">Or add one assignment</h2>
+          <form class="add" id="add-form">
+            <label>
+              Title
+              <input name="title" required maxlength="160" placeholder="Unit 3 test" />
+            </label>
+            <label>
+              Course
+              <input name="course" maxlength="80" placeholder="Physics" />
+            </label>
+            <label>
+              Due
+              <input name="due" type="datetime-local" required />
+            </label>
+            <div class="row">
+              <label>
+                Points
+                <input name="points" type="number" min="0" max="1000" step="1" placeholder="100" />
+              </label>
+              <label>
+                Type
+                <select name="type">
+                  <option value="test">Test</option>
+                  <option value="project">Project / DBQ</option>
+                  <option value="quiz">Quiz</option>
+                  <option value="homework">Homework</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Difficulty (1 easy – 5 brutal)
+              <select name="difficulty">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
+            <button class="primary" type="submit">Add to Upcoming</button>
+          </form>
+          <details class="weights-edit">
+            <summary>Advanced ranking weights</summary>
+            <p class="why">Defaults 40 / 25 / 20 / 15. Change them if your school weights tests differently. Saved on this device.</p>
+            <form id="weights-form" class="add">
+              <label>Urgency <input name="urgency" type="number" min="0" max="80" value="40" /></label>
+              <label>Points <input name="points" type="number" min="0" max="80" value="25" /></label>
+              <label>Type <input name="type" type="number" min="0" max="80" value="20" /></label>
+              <label>Difficulty <input name="difficulty" type="number" min="0" max="80" value="15" /></label>
+              <button type="submit">Apply weights</button>
+            </form>
+          </details>
+        </div>
+      </div>
+    </div>
+    <script>
