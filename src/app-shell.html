@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Duebrief</title>
+    <title>Duebrief — exam-week board</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
@@ -12,10 +12,12 @@
   <body>
     <div class="app">
       <header class="top">
-        <div class="brand">Duebrief</div>
+        <div>
+          <a class="brand" href="../">Duebrief</a>
+          <span class="mode">free · Schoology exam week</span>
+        </div>
         <div>
           <time id="clock"></time>
-          <span class="mode" id="mode-label"></span>
           <span class="mode" id="count"></span>
         </div>
       </header>
@@ -26,20 +28,52 @@
         <div class="label">Start this</div>
         <h1 id="next-title">Loading</h1>
         <p class="why" id="next-why"></p>
+        <div class="focus-row">
+          <button type="button" class="primary" id="focus-start">Start focus</button>
+          <button type="button" id="focus-stop" hidden>Stop</button>
+          <span id="focus-clock" class="focus-clock" hidden>0:00</span>
+        </div>
+      </section>
+
+      <div class="stakes" id="stakes"></div>
+
+      <section class="tonight" id="tonight-wrap">
+        <div class="tonight-head">
+          <h2>Tonight’s pack</h2>
+          <label class="hours">
+            Hours I have
+            <input id="hours" type="range" min="1" max="8" step="0.5" value="3" />
+            <strong id="hours-label">3h</strong>
+          </label>
+        </div>
+        <p class="why" id="tonight-why"></p>
+        <div id="tonight-list"></div>
+      </section>
+
+      <section class="week-wrap">
+        <h2>Week collisions</h2>
+        <div class="week" id="week"></div>
+      </section>
+
+      <section class="courses-wrap">
+        <h2>Course load</h2>
+        <div id="courses"></div>
       </section>
 
       <div class="toolbar">
         <button type="button" id="print-today">Print tonight</button>
         <button type="button" id="print-week">Print week</button>
         <button type="button" id="export">Export JSON</button>
-        <label id="import-label" class="demo-lock">
-          Import CSV
-          <input id="import" type="file" accept=".csv,.json,text/csv,application/json" hidden />
+        <button type="button" id="export-ics">Add to calendar</button>
+        <button type="button" id="share">Copy share link</button>
+        <button type="button" id="load-tuesday">Load Tuesday example</button>
+        <label id="import-label" class="file-label">
+          Import CSV / JSON
+          <input id="import" type="file" accept=".csv,.json,.ics,text/csv,text/plain,application/json" hidden />
         </label>
+        <a class="file-label" id="offline-link" href="../offline/duebrief.html" download>Download offline file</a>
       </div>
-      <p id="demo-lock" class="demo-lock" hidden>
-        Try-out is one Tuesday (5 Upcoming items). Delete one, or buy the file to import your own Schoology dump.
-      </p>
+      <p id="share-status" class="demo-lock" hidden></p>
 
       <div class="grid" id="lists">
         <div>
@@ -54,11 +88,13 @@
           <h2>Paste Upcoming</h2>
           <form class="add" id="paste-form">
             <label>
-              title,course,due,points,type,difficulty
+              CSV, pipes, tabs, or “Physics: Unit 3 test 100 pts due Sep 18”
               <textarea
                 name="paste"
-                rows="6"
-                placeholder="Unit 3 test,Physics,2026-09-18,100,test,5"
+                rows="7"
+                placeholder="Physics: Unit 3 test 100 pts due Sep 18
+History: DBQ Reconstruction 50 pts due Sep 16
+title,course,due,points,type,difficulty"
               ></textarea>
             </label>
             <button class="primary" type="submit">Rank this dump</button>
@@ -105,6 +141,17 @@
             </label>
             <button class="primary" type="submit">Add to Upcoming</button>
           </form>
+          <details class="weights-edit">
+            <summary>Advanced ranking weights</summary>
+            <p class="why">Defaults 40 / 25 / 20 / 15. Change them if your school weights tests differently. Saved on this device.</p>
+            <form id="weights-form" class="add">
+              <label>Urgency <input name="urgency" type="number" min="0" max="80" value="40" /></label>
+              <label>Points <input name="points" type="number" min="0" max="80" value="25" /></label>
+              <label>Type <input name="type" type="number" min="0" max="80" value="20" /></label>
+              <label>Difficulty <input name="difficulty" type="number" min="0" max="80" value="15" /></label>
+              <button type="submit">Apply weights</button>
+            </form>
+          </details>
         </div>
       </div>
     </div>

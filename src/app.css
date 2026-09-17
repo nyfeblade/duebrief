@@ -261,6 +261,174 @@ form.add .row {
   font-size: 13px;
 }
 
+a.brand {
+  text-decoration: none;
+}
+
+.stakes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.stakes div {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 12px;
+}
+
+.stakes strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.stakes span {
+  color: var(--meta);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tonight,
+.week-wrap,
+.courses-wrap {
+  margin-bottom: 32px;
+}
+
+.tonight-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hours {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+.hours input {
+  width: 140px;
+}
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.day {
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 10px 8px;
+  min-height: 92px;
+}
+
+.day .when {
+  color: var(--meta);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.day .load {
+  font-size: 18px;
+  margin: 6px 0 4px;
+}
+
+.day.tight {
+  border-color: #5a4a2a;
+}
+
+.day.blown {
+  border-color: #5a2a2a;
+}
+
+.day.blown .load {
+  color: var(--danger);
+}
+
+.course {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+.bar {
+  height: 6px;
+  background: var(--elevated);
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--school);
+}
+
+.leftover {
+  color: var(--danger);
+  font-size: 13px;
+}
+
+.focus-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.focus-clock {
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid var(--hairline);
+  background: var(--elevated);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.weights-edit {
+  margin-top: 28px;
+  color: var(--secondary);
+}
+
+.weights-edit summary {
+  cursor: pointer;
+  color: var(--meta);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.pack-tag {
+  color: var(--school);
+  font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .stakes,
+  .week {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media print {
   body {
     background: #fff;
