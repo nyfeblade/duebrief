@@ -1,0 +1,9 @@
+{
+  "name": "duebrief",
+  "private": true,
+  "description": "Tonight's work, ranked.",
+  "scripts": {
+    "test": "node tests/score.test.mjs",
+    "build": "node tools/build-product.mjs"
+  }
+}
