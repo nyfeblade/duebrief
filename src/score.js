@@ -12,10 +12,14 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   "use strict";
 
-  var WEIGHT_URGENCY = 40;
-  var WEIGHT_POINTS = 25;
-  var WEIGHT_TYPE = 20;
-  var WEIGHT_DIFFICULTY = 15;
+  var DEFAULT_WEIGHT_URGENCY = 40;
+  var DEFAULT_WEIGHT_POINTS = 25;
+  var DEFAULT_WEIGHT_TYPE = 20;
+  var DEFAULT_WEIGHT_DIFFICULTY = 15;
+  var WEIGHT_URGENCY = DEFAULT_WEIGHT_URGENCY;
+  var WEIGHT_POINTS = DEFAULT_WEIGHT_POINTS;
+  var WEIGHT_TYPE = DEFAULT_WEIGHT_TYPE;
+  var WEIGHT_DIFFICULTY = DEFAULT_WEIGHT_DIFFICULTY;
   var URGENCY_HORIZON_DAYS = 14;
   var URGENCY_CURVE_EXPONENT = 2;
   var URGENCY_OVERDUE_VALUE = 1.25;
@@ -105,15 +109,41 @@
     return components(item, now).total;
   }
 
+  function weights() {
+    return {
+      urgency: WEIGHT_URGENCY,
+      points: WEIGHT_POINTS,
+      type: WEIGHT_TYPE,
+      difficulty: WEIGHT_DIFFICULTY,
+    };
+  }
+
+  function configure(next) {
+    if (!next) {
+      WEIGHT_URGENCY = DEFAULT_WEIGHT_URGENCY;
+      WEIGHT_POINTS = DEFAULT_WEIGHT_POINTS;
+      WEIGHT_TYPE = DEFAULT_WEIGHT_TYPE;
+      WEIGHT_DIFFICULTY = DEFAULT_WEIGHT_DIFFICULTY;
+    } else {
+      if (next.urgency != null) WEIGHT_URGENCY = Number(next.urgency);
+      if (next.points != null) WEIGHT_POINTS = Number(next.points);
+      if (next.type != null) WEIGHT_TYPE = Number(next.type);
+      if (next.difficulty != null) WEIGHT_DIFFICULTY = Number(next.difficulty);
+    }
+    return weights();
+  }
+
   return {
     score: score,
     components: components,
     typeWeight: typeWeight,
+    configure: configure,
+    weights: weights,
     CONSTANTS: {
-      WEIGHT_URGENCY: WEIGHT_URGENCY,
-      WEIGHT_POINTS: WEIGHT_POINTS,
-      WEIGHT_TYPE: WEIGHT_TYPE,
-      WEIGHT_DIFFICULTY: WEIGHT_DIFFICULTY,
+      WEIGHT_URGENCY: DEFAULT_WEIGHT_URGENCY,
+      WEIGHT_POINTS: DEFAULT_WEIGHT_POINTS,
+      WEIGHT_TYPE: DEFAULT_WEIGHT_TYPE,
+      WEIGHT_DIFFICULTY: DEFAULT_WEIGHT_DIFFICULTY,
       URGENCY_HORIZON_DAYS: URGENCY_HORIZON_DAYS,
       URGENCY_CURVE_EXPONENT: URGENCY_CURVE_EXPONENT,
       URGENCY_OVERDUE_VALUE: URGENCY_OVERDUE_VALUE,

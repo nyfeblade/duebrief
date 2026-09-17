@@ -3,7 +3,7 @@
   "private": true,
   "description": "Schoology is a list. This is the order.",
   "scripts": {
-    "test": "node tests/score.test.mjs && node tests/upcoming.test.mjs",
+    "test": "node tests/score.test.mjs && node tests/upcoming.test.mjs && node tests/estimate.test.mjs && node tests/plan.test.mjs && node tests/share.test.mjs",
     "build": "node tools/build-product.mjs"
   }
 }
