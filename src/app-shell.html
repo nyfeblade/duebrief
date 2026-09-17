@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Duebrief — exam-week board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <!--APP_CSS-->
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div>
+          <a class="brand" href="../">Duebrief</a>
+          <span class="mode">free · Schoology exam week</span>
+        </div>
+        <div>
+          <time id="clock"></time>
+          <span class="mode" id="count"></span>
+        </div>
+      </header>
+
+      <!--DEMO_BANNER-->
+
+      <section class="next">
+        <div class="label">Start this</div>
+        <h1 id="next-title">Loading</h1>
+        <p class="why" id="next-why"></p>
+        <div class="focus-row">
+          <button type="button" class="primary" id="focus-start">Start focus</button>
+          <button type="button" id="focus-stop" hidden>Stop</button>
+          <span id="focus-clock" class="focus-clock" hidden>0:00</span>
+        </div>
+      </section>
+
+      <div class="stakes" id="stakes"></div>
+
+      <section class="tonight" id="tonight-wrap">
+        <div class="tonight-head">
+          <h2>Tonight’s pack</h2>
+          <label class="hours">
+            Hours I have
+            <input id="hours" type="range" min="1" max="8" step="0.5" value="3" />
+            <strong id="hours-label">3h</strong>
+          </label>
+        </div>
+        <p class="why" id="tonight-why"></p>
+        <div id="tonight-list"></div>
+      </section>
+
+      <section class="week-wrap">
+        <h2>Week collisions</h2>
+        <div class="week" id="week"></div>
+      </section>
+
+      <section class="courses-wrap">
+        <h2>Course load</h2>
+        <div id="courses"></div>
+      </section>
+
+      <div class="toolbar">
+        <button type="button" id="print-today">Print tonight</button>
+        <button type="button" id="print-week">Print week</button>
+        <button type="button" id="export">Export JSON</button>
+        <button type="button" id="export-ics">Add to calendar</button>
+        <button type="button" id="share">Copy share link</button>
+        <button type="button" id="load-tuesday">Load Tuesday example</button>
+        <label id="import-label" class="file-label">
+          Import CSV / JSON
+          <input id="import" type="file" accept=".csv,.json,.ics,text/csv,text/plain,application/json" hidden />
+        </label>
+        <a class="file-label" id="offline-link" href="../offline/duebrief.html" download>Download offline file</a>
+      </div>
+      <p id="share-status" class="demo-lock" hidden></p>
+
+      <div class="grid" id="lists">
+        <div>
+          <h2>Overdue</h2>
+          <div id="overdue-list"></div>
+          <h2 style="margin-top: 28px">Due in 48 hours</h2>
+          <div id="soon-list"></div>
+          <h2 style="margin-top: 28px">Whole dump</h2>
+          <div id="all-list"></div>
+        </div>
+        <div>
+          <h2>Paste Upcoming</h2>
+          <form class="add" id="paste-form">
+            <label>
+              CSV, pipes, tabs, or “Physics: Unit 3 test 100 pts due Sep 18”
+              <textarea
+                name="paste"
+                rows="7"
+                placeholder="Physics: Unit 3 test 100 pts due Sep 18
+History: DBQ Reconstruction 50 pts due Sep 16
+title,course,due,points,type,difficulty"
+              ></textarea>
+            </label>
+            <button class="primary" type="submit">Rank this dump</button>
+          </form>
+          <h2 style="margin-top: 28px">Or add one assignment</h2>
+          <form class="add" id="add-form">
+            <label>
+              Title
+              <input name="title" required maxlength="160" placeholder="Unit 3 test" />
+            </label>
+            <label>
+              Course
+              <input name="course" maxlength="80" placeholder="Physics" />
+            </label>
+            <label>
+              Due
+              <input name="due" type="datetime-local" required />
+            </label>
+            <div class="row">
+              <label>
+                Points
+                <input name="points" type="number" min="0" max="1000" step="1" placeholder="100" />
+              </label>
+              <label>
+                Type
+                <select name="type">
+                  <option value="test">Test</option>
+                  <option value="project">Project / DBQ</option>
+                  <option value="quiz">Quiz</option>
+                  <option value="homework">Homework</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Difficulty (1 easy – 5 brutal)
+              <select name="difficulty">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </label>
+            <button class="primary" type="submit">Add to Upcoming</button>
+          </form>
+          <details class="weights-edit">
+            <summary>Advanced ranking weights</summary>
+            <p class="why">Defaults 40 / 25 / 20 / 15. Change them if your school weights tests differently. Saved on this device.</p>
+            <form id="weights-form" class="add">
+              <label>Urgency <input name="urgency" type="number" min="0" max="80" value="40" /></label>
+              <label>Points <input name="points" type="number" min="0" max="80" value="25" /></label>
+              <label>Type <input name="type" type="number" min="0" max="80" value="20" /></label>
+              <label>Difficulty <input name="difficulty" type="number" min="0" max="80" value="15" /></label>
+              <button type="submit">Apply weights</button>
+            </form>
+          </details>
+        </div>
+      </div>
+    </div>
+    <!--APP_JS-->
+  </body>
+</html>

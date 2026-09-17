@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Duebrief — Schoology is a list. This is the order.</title>
+    <meta
+      name="description"
+      content="Free exam-week board for Schoology high-schoolers. Paste Upcoming. Get the one thing to start, tonight's pack, and which nights blow up. Nothing leaves the browser."
+    />
+    <meta property="og:title" content="Duebrief — Schoology is a list. This is the order." />
+    <meta
+      property="og:description"
+      content="Free for the class. Paste Upcoming. Start the unit test, not the workbook."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/index.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/store.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Duebrief",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Luke Horn"
+        },
+        "description": "Free exam-week board for high-schoolers on Schoology."
+      }
+    </script>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="mark">Duebrief · free for the class</div>
+      <h1>Schoology is a list. This is the order.</h1>
+      <p class="lede">
+        Paste tonight's Upcoming dump. See what to start, what fits in the
+        hours you actually have, and which nights are already blown. Built for
+        exam week. Free. Nothing is uploaded.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="app/">Open the board</a>
+        <a class="btn" href="offline/duebrief.html" download>Download the offline file</a>
+      </div>
+      <p class="price">No account. No checkout. Not a Schoology add-on — you paste Upcoming yourself.</p>
+
+      <hr />
+      <h2>What it does that Upcoming will not</h2>
+      <ul>
+        <li>Ranks the pile so a 100-point test still beats a 10-point workbook</li>
+        <li>Packs tonight from the hours you have, and names what does not fit</li>
+        <li>Maps the next seven days so collision nights show up before 11pm</li>
+        <li>Counts points overdue / 48h / this week, and load by course</li>
+        <li>Parses messy paste (“Physics: Unit 3 test 100 pts due Sep 18”), CSV, pipes, tabs</li>
+        <li>Copies a share link in the URL hash — a classmate opens the same dump, no login</li>
+        <li>Exports .ics and JSON, prints tonight, runs a focus timer on the next item</li>
+        <li>Saves on this device only</li>
+      </ul>
+
+      <hr />
+      <h2>Who this is for</h2>
+      <p>
+        Anyone at a Schoology school staring at exam week — especially Luke's
+        classmates. Parents can open the same board. If you wanted a calendar
+        or Notion, this is not that. Schoology already is the list. This is the
+        order, the night plan, and the collisions.
+      </p>
+
+      <hr />
+      <h2>The Tuesday it was built for</h2>
+      <p>
+        Physics unit test tomorrow (100 pts). History DBQ already late (50).
+        Spanish workbook due tonight (10). Chem quiz Friday. Omnibus recitation
+        Monday. Open the board — it loads that dump so you can see the math
+        before you paste yours.
+      </p>
+
+      <hr />
+      <h2>The model</h2>
+      <div class="weights">
+        <div>
+          <strong>40 urgency</strong>
+          Quiet two weeks out. Steep in the last days. Overdue pins urgency — not the whole score.
+        </div>
+        <div>
+          <strong>25 points</strong>
+          The 100-point test outweighs the 10-point workbook. Blank points count as 20.
+        </div>
+        <div>
+          <strong>20 type</strong>
+          Test &gt; project / DBQ &gt; quiz &gt; homework &gt; recitation.
+        </div>
+        <div>
+          <strong>15 difficulty</strong>
+          What you said, 1–5. Time estimates follow the same type + difficulty.
+        </div>
+      </div>
+      <p>
+        Math is public in
+        <a href="https://github.com/nyfeblade/duebrief/blob/cursor/duebrief-storefront-7e8b/src/score.js">score.js</a>.
+        Weights are editable on the board if your school is weirder than that.
+      </p>
+
+      <footer>
+        Made by Luke Horn · free ·
+        <a href="legal/terms.html">Terms</a> ·
+        <a href="legal/privacy.html">Privacy</a> ·
+        <a href="https://github.com/nyfeblade/duebrief">Source</a>
+      </footer>
+    </main>
+  </body>
+</html>
