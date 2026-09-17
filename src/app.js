@@ -77,6 +77,29 @@
       .replace(/"/g, "&quot;");
   }
 
+  function attachIds(rows) {
+    return rows.map(function (row) {
+      var copy = {};
+      Object.keys(row).forEach(function (key) {
+        copy[key] = row[key];
+      });
+      copy.id = uid();
+      copy.status = copy.status || "upcoming";
+      return copy;
+    });
+  }
+
+  function applyIncoming(rows, replace) {
+    var next = attachIds(rows);
+    if (MODE === "demo") {
+      var room = replace ? MAX_DEMO : Math.max(0, MAX_DEMO - activeItems().length);
+      next = next.slice(0, room);
+    }
+    state.items = replace ? next : state.items.concat(next);
+    save();
+    render();
+  }
+
   function renderList(id, rows, emptyText) {
     var el = document.getElementById(id);
     if (!rows.length) {
@@ -90,6 +113,7 @@
           var item = row.item;
           var math = row.math;
           var cls = item.status === "submitted" ? "done" : math.daysUntilDue <= 0 ? "overdue" : "";
+          var course = item.course ? escapeHtml(item.course) + " · " : "";
           return (
             '<li class="' +
             cls +
@@ -98,6 +122,7 @@
             '</div><div><div class="title">' +
             escapeHtml(item.title) +
             '</div><div class="meta">' +
+            course +
             escapeHtml(typeLabel(item.type)) +
             " · " +
             (item.points == null ? "unscored" : item.points + " pts") +
@@ -113,7 +138,7 @@
             math.type +
             " · difficulty " +
             math.difficulty +
-            "</div></div><div class=\"row-actions\">" +
+            '</div></div><div class="row-actions">' +
             (item.status === "submitted"
               ? '<button type="button" data-act="reopen" data-id="' +
                 item.id +
@@ -136,19 +161,19 @@
     var nextTitle = document.getElementById("next-title");
     var nextWhy = document.getElementById("next-why");
     if (!next) {
-      nextTitle.textContent = "Nothing in the list.";
-      nextWhy.textContent = "Add the work you actually have. The ranking is only as honest as the list.";
+      nextTitle.textContent = "Nothing in Upcoming.";
+      nextWhy.textContent =
+        "Paste the Schoology dump or add the assignments that are actually due. The ranking is only as honest as the list.";
     } else {
       nextTitle.textContent = next.item.title;
+      var courseBit = next.item.course ? next.item.course + " · " : "";
       nextWhy.textContent =
+        courseBit +
         "Score " +
         next.math.total.toFixed(1) +
         " — " +
         fmtWhen(next.item.due) +
-        ". " +
-        (next.math.note === "overdue"
-          ? "Overdue work is pinned above everything still upcoming."
-          : "Urgency ramps in the last two weeks; a test outranks homework of the same points.");
+        ". Schoology listed a pile. Start this one: a high-point test still beats an overdue paper, because overdue only pins urgency.";
     }
 
     var overdue = open.filter(function (row) {
@@ -160,7 +185,7 @@
 
     renderList("overdue-list", overdue, "Nothing overdue.");
     renderList("soon-list", soon, "Nothing due in the next 48 hours.");
-    renderList("all-list", ranked(state.items), "Add the first piece of work.");
+    renderList("all-list", ranked(state.items), "Paste tonight's Upcoming list.");
 
     var count = document.getElementById("count");
     count.textContent =
@@ -190,6 +215,7 @@
     state.items.push({
       id: uid(),
       title: title,
+      course: from.course.value.trim() || null,
       due: due.toISOString(),
       points: pointsRaw === "" ? null : Number(pointsRaw),
       type: from.type.value,
@@ -222,13 +248,12 @@
     render();
   }
 
-  function seedDemo() {
-    if (state.items.length) return;
+  function tuesdayDump() {
     var now = state.now.getTime();
-    state.items = [
+    return [
       {
-        id: uid(),
-        title: "Physics unit test",
+        title: "Unit 3 test",
+        course: "Physics",
         due: new Date(now + 26 * 3600000).toISOString(),
         points: 100,
         type: "test",
@@ -236,8 +261,17 @@
         status: "upcoming",
       },
       {
-        id: uid(),
-        title: "Spanish homework 4.2",
+        title: "DBQ: Reconstruction",
+        course: "History",
+        due: new Date(now - 20 * 3600000).toISOString(),
+        points: 50,
+        type: "project",
+        difficulty: 4,
+        status: "upcoming",
+      },
+      {
+        title: "4.2 workbook",
+        course: "Spanish",
         due: new Date(now + 8 * 3600000).toISOString(),
         points: 10,
         type: "homework",
@@ -245,15 +279,39 @@
         status: "upcoming",
       },
       {
-        id: uid(),
-        title: "History DBQ (overdue)",
-        due: new Date(now - 20 * 3600000).toISOString(),
-        points: 50,
-        type: "project",
-        difficulty: 4,
+        title: "Mole quiz",
+        course: "Chem",
+        due: new Date(now + 52 * 3600000).toISOString(),
+        points: 25,
+        type: "quiz",
+        difficulty: 3,
+        status: "upcoming",
+      },
+      {
+        title: "Recitation, Book II",
+        course: "Omnibus",
+        due: new Date(now + 96 * 3600000).toISOString(),
+        points: 20,
+        type: "other",
+        difficulty: 3,
         status: "upcoming",
       },
     ];
+  }
+
+  function seedDemo() {
+    if (state.items.length) return;
+    applyIncoming(tuesdayDump(), true);
+  }
+
+  function pasteUpcoming(text, replace) {
+    if (!window.DuebriefUpcoming) return;
+    var rows = DuebriefUpcoming.parse(text);
+    if (!rows.length) {
+      window.alert("Nothing parsed. Use title,course,due,points,type,difficulty — or pipes.");
+      return;
+    }
+    applyIncoming(rows, replace);
   }
 
   function exportJson() {
@@ -268,22 +326,29 @@
     URL.revokeObjectURL(a.href);
   }
 
-  function importJson(file) {
-    if (MODE !== "paid" || !file) return;
+  function importFile(file) {
+    if (!file) return;
     var reader = new FileReader();
     reader.onload = function () {
-      try {
-        var parsed = JSON.parse(String(reader.result));
-        var items = Array.isArray(parsed) ? parsed : parsed.items;
-        if (!Array.isArray(items)) return;
-        state.items = items.filter(function (item) {
-          return item && item.title && item.due;
-        });
-        save();
-        render();
-      } catch (err) {
-        window.alert("That file is not a Duebrief export.");
+      var text = String(reader.result);
+      if (file.name && file.name.toLowerCase().indexOf(".json") !== -1) {
+        if (MODE !== "paid") return;
+        try {
+          var parsed = JSON.parse(text);
+          var items = Array.isArray(parsed) ? parsed : parsed.items;
+          if (!Array.isArray(items)) return;
+          applyIncoming(
+            items.filter(function (item) {
+              return item && item.title && item.due;
+            }),
+            true
+          );
+        } catch (err) {
+          window.alert("That file is not a Duebrief export.");
+        }
+        return;
       }
+      pasteUpcoming(text, true);
     };
     reader.readAsText(file);
   }
@@ -304,12 +369,21 @@
       month: "long",
       day: "numeric",
     });
-    document.getElementById("mode-label").textContent = MODE === "paid" ? "local file" : "5-item try-out";
+    document.getElementById("mode-label").textContent =
+      MODE === "paid" ? "local file · Schoology dump" : "Tuesday dump · 5-item try-out";
     document.getElementById("add-form").addEventListener("submit", function (event) {
       event.preventDefault();
       addItem(event.target);
     });
     document.getElementById("lists").addEventListener("click", onListClick);
+
+    var pasteForm = document.getElementById("paste-form");
+    if (pasteForm) {
+      pasteForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        pasteUpcoming(event.target.paste.value, true);
+      });
+    }
 
     var exportBtn = document.getElementById("export");
     var importInput = document.getElementById("import");
@@ -318,7 +392,7 @@
     if (MODE === "paid") {
       exportBtn.addEventListener("click", exportJson);
       importInput.addEventListener("change", function (event) {
-        importJson(event.target.files[0]);
+        importFile(event.target.files[0]);
         event.target.value = "";
       });
       printToday.addEventListener("click", function () {
@@ -328,10 +402,17 @@
         printView("week");
       });
     } else {
-      ["export", "import", "print-today", "print-week", "import-label"].forEach(function (id) {
+      ["export", "print-today", "print-week"].forEach(function (id) {
         var el = document.getElementById(id);
         if (el) el.hidden = true;
       });
+      if (importInput) {
+        importInput.accept = ".csv,text/csv,text/plain";
+        importInput.addEventListener("change", function (event) {
+          importFile(event.target.files[0]);
+          event.target.value = "";
+        });
+      }
     }
     render();
   }

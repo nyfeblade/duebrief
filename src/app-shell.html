@@ -23,22 +23,22 @@
       <!--DEMO_BANNER-->
 
       <section class="next">
-        <div class="label">Next</div>
+        <div class="label">Start this</div>
         <h1 id="next-title">Loading</h1>
         <p class="why" id="next-why"></p>
       </section>
 
       <div class="toolbar">
-        <button type="button" id="print-today">Print today</button>
+        <button type="button" id="print-tonight">Print tonight</button>
         <button type="button" id="print-week">Print week</button>
         <button type="button" id="export">Export JSON</button>
         <label id="import-label" class="demo-lock">
-          Import
-          <input id="import" type="file" accept="application/json" hidden />
+          Import CSV
+          <input id="import" type="file" accept=".csv,.json,text/csv,application/json" hidden />
         </label>
       </div>
       <p id="demo-lock" class="demo-lock" hidden>
-        Try-out cap reached (5 open items). Delete one, or buy the file for unlimited + save + print.
+        Try-out is one Tuesday (5 Upcoming items). Delete one, or buy the file to import your own Schoology dump.
       </p>
 
       <div class="grid" id="lists">
@@ -47,15 +47,31 @@
           <div id="overdue-list"></div>
           <h2 style="margin-top: 28px">Due in 48 hours</h2>
           <div id="soon-list"></div>
-          <h2 style="margin-top: 28px">All work</h2>
+          <h2 style="margin-top: 28px">Whole dump</h2>
           <div id="all-list"></div>
         </div>
         <div>
-          <h2>Add work</h2>
+          <h2>Paste Upcoming</h2>
+          <form class="add" id="paste-form">
+            <label>
+              title,course,due,points,type,difficulty
+              <textarea
+                name="paste"
+                rows="6"
+                placeholder="Unit 3 test,Physics,2026-09-18,100,test,5"
+              ></textarea>
+            </label>
+            <button class="primary" type="submit">Rank this dump</button>
+          </form>
+          <h2 style="margin-top: 28px">Or add one assignment</h2>
           <form class="add" id="add-form">
             <label>
               Title
-              <input name="title" required maxlength="160" placeholder="Physics unit test" />
+              <input name="title" required maxlength="160" placeholder="Unit 3 test" />
+            </label>
+            <label>
+              Course
+              <input name="course" maxlength="80" placeholder="Physics" />
             </label>
             <label>
               Due
@@ -64,15 +80,15 @@
             <div class="row">
               <label>
                 Points
-                <input name="points" type="number" min="0" max="1000" step="1" placeholder="20" />
+                <input name="points" type="number" min="0" max="1000" step="1" placeholder="100" />
               </label>
               <label>
                 Type
                 <select name="type">
-                  <option value="homework">Homework</option>
-                  <option value="quiz">Quiz</option>
-                  <option value="project">Project</option>
                   <option value="test">Test</option>
+                  <option value="project">Project / DBQ</option>
+                  <option value="quiz">Quiz</option>
+                  <option value="homework">Homework</option>
                   <option value="other">Other</option>
                 </select>
               </label>
@@ -87,7 +103,7 @@
                 <option value="5">5</option>
               </select>
             </label>
-            <button class="primary" type="submit">Add to the list</button>
+            <button class="primary" type="submit">Add to Upcoming</button>
           </form>
         </div>
       </div>
