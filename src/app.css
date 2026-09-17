@@ -1,0 +1,294 @@
+:root {
+  --void: #000;
+  --surface: #111;
+  --elevated: #161616;
+  --hairline: #2a2a2a;
+  --text: #f2f2f2;
+  --secondary: #8a8a8a;
+  --meta: #6b6b6b;
+  --silver: #c8c8c8;
+  --school: #8eb4c9;
+  --danger: #c98989;
+  --ok: #8aa88a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--text);
+  font: 15px/1.45 "IBM Plex Sans", "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--silver);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: var(--elevated);
+  border: 1px solid var(--hairline);
+  color: var(--text);
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus-visible {
+  border-color: var(--silver);
+  outline: none;
+}
+
+button.primary {
+  background: var(--text);
+  color: var(--void);
+  border-color: var(--text);
+}
+
+button.ghost {
+  background: transparent;
+}
+
+button.danger {
+  color: var(--danger);
+  border-color: #3a2222;
+}
+
+.app {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 20px 80px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 16px;
+  margin-bottom: 28px;
+}
+
+.brand {
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+
+.top time,
+.mode {
+  color: var(--meta);
+  font-size: 13px;
+}
+
+.banner {
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  padding: 12px 14px;
+  margin-bottom: 24px;
+  color: var(--secondary);
+}
+
+.banner a {
+  color: var(--text);
+}
+
+.next {
+  margin-bottom: 36px;
+}
+
+.next .label {
+  color: var(--meta);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.next h1 {
+  margin: 8px 0 6px;
+  font-size: clamp(32px, 6vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.next .why {
+  color: var(--secondary);
+  max-width: 40rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 800px) {
+  .grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+h2 {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--meta);
+  margin: 0 0 12px;
+}
+
+ul.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--hairline);
+}
+
+ul.list li {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.score {
+  font-variant-numeric: tabular-nums;
+  color: var(--silver);
+}
+
+.title {
+  font-weight: 500;
+}
+
+.meta {
+  color: var(--meta);
+  font-size: 13px;
+}
+
+.overdue .title,
+.overdue .score {
+  color: var(--danger);
+}
+
+.done .title {
+  color: var(--meta);
+  text-decoration: line-through;
+}
+
+.row-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.row-actions button {
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+form.add {
+  display: grid;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  padding: 14px;
+}
+
+form.add label {
+  display: grid;
+  gap: 4px;
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+form.add input,
+form.add select {
+  background: var(--void);
+  border: 1px solid var(--hairline);
+  padding: 8px;
+}
+
+form.add .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.breakdown {
+  color: var(--meta);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.empty {
+  color: var(--secondary);
+}
+
+.demo-lock {
+  color: var(--meta);
+  font-size: 13px;
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  .top,
+  .banner,
+  form.add,
+  .toolbar,
+  .row-actions,
+  .demo-lock {
+    display: none !important;
+  }
+
+  .app {
+    max-width: none;
+    padding: 0;
+  }
+
+  .next h1 {
+    color: #111;
+  }
+
+  ul.list li {
+    border-color: #ddd;
+  }
+
+  .score,
+  .title,
+  .meta,
+  .why,
+  h2,
+  .brand {
+    color: #111;
+  }
+}
