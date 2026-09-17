@@ -6,15 +6,15 @@
     <title>Duebrief — Schoology is a list. This is the order.</title>
     <meta
       name="description"
-      content="The $14 exam-week ranker for Schoology high-schoolers. Paste tonight's Upcoming dump. Start the unit test, not the 10-point workbook. Offline. One file."
+      content="Free exam-week board for Schoology high-schoolers. Paste Upcoming. Get the one thing to start, tonight's pack, and which nights blow up. Nothing leaves the browser."
     />
     <meta property="og:title" content="Duebrief — Schoology is a list. This is the order." />
     <meta
       property="og:description"
-      content="Exam-week ranker for Schoology students. Paste Upcoming. Get the one thing to start. $14 once."
+      content="Free for the class. Paste Upcoming. Start the unit test, not the workbook."
     />
-    <meta property="og:type" content="product" />
-    <link rel="canonical" href="https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://raw.githack.com/nyfeblade/duebrief/cursor/duebrief-storefront-7e8b/index.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet" />
@@ -28,71 +28,61 @@
         "operatingSystem": "Any",
         "offers": {
           "@type": "Offer",
-          "price": "14",
+          "price": "0",
           "priceCurrency": "USD"
         },
         "author": {
           "@type": "Person",
           "name": "Luke Horn"
         },
-        "description": "Exam-week ranker for high-schoolers on Schoology. Paste Upcoming, get the next assignment."
+        "description": "Free exam-week board for high-schoolers on Schoology."
       }
     </script>
   </head>
   <body>
     <main class="wrap">
-      <div class="mark">Duebrief · Schoology exam week</div>
+      <div class="mark">Duebrief · free for the class</div>
       <h1>Schoology is a list. This is the order.</h1>
       <p class="lede">
-        For the night a unit test, an overdue DBQ, and Spanish homework all land
-        in Upcoming. Paste the dump. Start the test. One HTML file. $14 once.
+        Paste tonight's Upcoming dump. See what to start, what fits in the
+        hours you actually have, and which nights are already blown. Built for
+        exam week. Free. Nothing is uploaded.
       </p>
       <div class="cta">
-        <a class="btn" href="try/">Open Tuesday's dump</a>
-        <button class="primary" type="button" id="buy">Buy <span id="price">$14</span></button>
+        <a class="btn primary" href="app/">Open the board</a>
+        <a class="btn" href="offline/duebrief.html" download>Download the offline file</a>
       </div>
-      <p class="price">Personal use. Offline. Not a Schoology add-on — you paste Upcoming yourself.</p>
-      <div class="panel" id="buy-panel" hidden>
-        <p>
-          The file is finished. Card checkout is the one seller step that still
-          needs a real identity, so it is not live yet.
-        </p>
-        <p>
-          Email <a id="mail-buy" href="mailto:hornsons21@gmail.com">hornsons21@gmail.com</a>
-          with the subject Duebrief and Luke will send a payment link. Or open
-          Tuesday's dump now — it is a real five-assignment collision.
-        </p>
-      </div>
+      <p class="price">No account. No checkout. Not a Schoology add-on — you paste Upcoming yourself.</p>
+
+      <hr />
+      <h2>What it does that Upcoming will not</h2>
+      <ul>
+        <li>Ranks the pile so a 100-point test still beats a 10-point workbook</li>
+        <li>Packs tonight from the hours you have, and names what does not fit</li>
+        <li>Maps the next seven days so collision nights show up before 11pm</li>
+        <li>Counts points overdue / 48h / this week, and load by course</li>
+        <li>Parses messy paste (“Physics: Unit 3 test 100 pts due Sep 18”), CSV, pipes, tabs</li>
+        <li>Copies a share link in the URL hash — a classmate opens the same dump, no login</li>
+        <li>Exports .ics and JSON, prints tonight, runs a focus timer on the next item</li>
+        <li>Saves on this device only</li>
+      </ul>
 
       <hr />
       <h2>Who this is for</h2>
       <p>
-        High-schoolers (and the parent staring at the same Upcoming screen)
-        whose school runs on Schoology. Specifically exam week, when the LMS
-        shows five things and will not say which one wastes the night.
+        Anyone at a Schoology school staring at exam week — especially Luke's
+        classmates. Parents can open the same board. If you wanted a calendar
+        or Notion, this is not that. Schoology already is the list. This is the
+        order, the night plan, and the collisions.
       </p>
-      <p>
-        Not for people who want a calendar, a Notion template, or a generic
-        homework app. Schoology already is the list. This only ranks it.
-      </p>
-
-      <hr />
-      <h2>What $14 buys that the free try-out does not</h2>
-      <ul>
-        <li>Import your own Upcoming dump (CSV or paste) — unlimited assignments</li>
-        <li>A 60-second Schoology → Duebrief card, plus a sample Tuesday CSV</li>
-        <li>Local save, JSON backup, print tonight's brief</li>
-        <li>The same ranking the try-out already uses</li>
-      </ul>
-      <p>Not affiliated with Schoology. No login. No cloud.</p>
 
       <hr />
       <h2>The Tuesday it was built for</h2>
       <p>
         Physics unit test tomorrow (100 pts). History DBQ already late (50).
         Spanish workbook due tonight (10). Chem quiz Friday. Omnibus recitation
-        Monday. Schoology lists them as equals. The try-out does not:
-        <a href="try/">the test is next</a>, and the math says why.
+        Monday. Open the board — it loads that dump so you can see the math
+        before you paste yours.
       </p>
 
       <hr />
@@ -112,28 +102,21 @@
         </div>
         <div>
           <strong>15 difficulty</strong>
-          What you said, 1–5. If you lie, you start the wrong thing.
+          What you said, 1–5. Time estimates follow the same type + difficulty.
         </div>
       </div>
       <p>
         Math is public in
         <a href="https://github.com/nyfeblade/duebrief/blob/cursor/duebrief-storefront-7e8b/src/score.js">score.js</a>.
-      </p>
-
-      <hr />
-      <h2>Refunds</h2>
-      <p>
-        14 days, no argument. If it does not change what you start tonight, keep the $14.
+        Weights are editable on the board if your school is weirder than that.
       </p>
 
       <footer>
-        Made by Luke Horn ·
+        Made by Luke Horn · free ·
         <a href="legal/terms.html">Terms</a> ·
-        <a href="legal/refunds.html">Refunds</a> ·
+        <a href="legal/privacy.html">Privacy</a> ·
         <a href="https://github.com/nyfeblade/duebrief">Source</a>
       </footer>
     </main>
-    <script src="config.js"></script>
-    <script src="assets/store.js"></script>
   </body>
 </html>
